@@ -1,8 +1,14 @@
 pipeline {
     agent any
+    
     tools {
         nodejs "my-nodejs"
     }
+    
+    options {
+        skipDefaultCheckout(true)
+    }
+    
     stages {
 
         stage('Checkout') {
@@ -54,9 +60,9 @@ pipeline {
                         usernameVariable: 'USER',
                         passwordVariable: 'PASS')
                 ]){
-                    sh "docker build -t docker-hub-repo/myapp:${IMAGE_NAME} ."
+                    sh "docker build -t olusolaayeni/demo-app:node-app-${IMAGE_NAME} ."
                     sh 'echo $PASS | docker login -u $USER --password-stdin'
-                    sh "docker push docker-hub-repo/myapp:${IMAGE_NAME}"
+                    sh "docker push olusolaayeni/demo-app:node-app-${IMAGE_NAME}"
                 }
             }
         }
