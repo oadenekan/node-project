@@ -74,17 +74,17 @@ pipeline {
                         usernamePassword(
                             credentialsId: 'github-jenkins-token',
                             usernameVariable: 'USER',
-                            passwordVariable: 'PASS')
+                            passwordVariable: 'TOKEN')
                      ]){
                         // git config here for the first time run
                         sh '''
                         git config user.email "jenkins@example.com"
                         git config user.name "Jenkins"
-                        git remote set-url origin https://$USER:$PASS@github.com/oadenekan/node-project.git
+                        git remote set-url origin https://$USER:$TOKEN@github.com/oadenekan/node-project.git
                         git add app/package.json
                         git commit -m "ci: version bump" || true
 
-                        git push origin main
+                        git push https://${USER}:${TOKEN}@github.com/oadenekan/node-project.git HEAD:main
                         '''
                     }
                 }
