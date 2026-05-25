@@ -72,7 +72,7 @@ pipeline {
                 script {
                      withCredentials([
                         usernamePassword(
-                            credentialsId: 'GitHub-credentials',
+                            credentialsId: 'GitHub-ssh',
                             usernameVariable: 'USER',
                             passwordVariable: 'PASS')
                      ]){
