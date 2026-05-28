@@ -139,9 +139,3 @@ If tests fail, pipeline stops execution.
 ## 👨‍💻 Author
 
 Olusola Ayeni
-
----
-
-## 📜 License
-
-MIT License
